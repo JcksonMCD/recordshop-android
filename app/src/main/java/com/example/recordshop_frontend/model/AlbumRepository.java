@@ -15,7 +15,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class AlbumRepository {
-    private MutableLiveData<List<Album>> mutableLiveData;
+    private MutableLiveData<List<Album>> mutableLiveData = new MutableLiveData<>();
     private Application application;
 
     public AlbumRepository(Application application) {

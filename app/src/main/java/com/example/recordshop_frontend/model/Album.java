@@ -27,16 +27,6 @@ public class Album extends BaseObservable {
     @SerializedName(value = "stockQuantity")
     String stockQuantity;
 
-//            "id": 1,
-//        "albumName": "Anne",
-//        "artist": {
-//            "id": 1,
-//            "name": "Art Name"
-//        },
-//        "genre": "ROCK",
-//        "releaseYear": 1990,
-//        "stockQuantity": 10
-
     public Album() {
     }
 
