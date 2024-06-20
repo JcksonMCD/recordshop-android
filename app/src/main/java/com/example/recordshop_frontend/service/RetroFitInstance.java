@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetroFitInstance {
     private static Retrofit retrofit = null;
-    private static final String BASE_URL = "http://10.0.22:8080/api/v1/";
+    private static final String BASE_URL = "http://10.0.2.2:8080/api/v1/";
 
     public static AlbumApiService getService(){
         if (retrofit == null){

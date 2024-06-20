@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data><variable
+        name="album"
+        type="com.example.recordshop_frontend.model.Album" /></data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/itemImage"
+        android:src="@drawable/vinyl_980205"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/recordName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:textSize="17sp"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:text="@{album.albumName}"
+        app:layout_constraintStart_toEndOf="@id/itemImage"
+        app:layout_constraintTop_toTopOf="@id/itemImage"/>
+
+    <TextView
+        android:id="@+id/recordArtist"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@{album.artist.artistName}"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="20dp"
+        android:textStyle="italic|bold"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@id/recordName"
+        app:layout_constraintTop_toBottomOf="@id/recordName"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/recordReleaseYear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@{album.releaseYear}"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="@id/recordArtist"
+        app:layout_constraintTop_toBottomOf="@id/recordGenre"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/recordGenre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{album.genre}"
+        android:textSize="13sp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="@id/recordName"
+        app:layout_constraintTop_toBottomOf="@id/recordArtist"/>
+
+    <TextView
+        android:id="@+id/recordStock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{album.stockQuantity}"
+        android:textStyle="italic"
+        android:textSize="13sp"
+        android:layout_marginEnd="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/recordName"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
