@@ -1,6 +1,7 @@
 package com.example.recordshop_frontend.model;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -35,7 +36,8 @@ public class AlbumRepository {
 
             @Override
             public void onFailure(Call<List<Album>> call, Throwable t) {
-
+                Log.i("albumListLog", "ON FAILURE");
+                Log.i("albumListLog", t.getMessage());
             }
         });
 

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.recordshop_frontend.R;
 import com.example.recordshop_frontend.databinding.ActivityMainBinding;
 import com.example.recordshop_frontend.model.Album;
+import com.example.recordshop_frontend.model.Artist;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,37 +28,45 @@ public class MainActivity extends AppCompatActivity {
     private MainActivityViewModel mainActivityViewModel;
     private ActivityMainBinding activityMainBinding;
 
-    //super.onCreate(savedInstanceState);
-    //        EdgeToEdge.enable(this);
-    //        setContentView(R.layout.activity_main);
-    //        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-    //            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-    //            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-    //            return insets;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-            activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-            mainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
-            getAllAlbums();
+
+        activityMainBinding = DataBindingUtil.setContentView(
+                this,
+                R.layout.activity_main);
+
+        mainActivityViewModel = new ViewModelProvider(this)
+                .get(MainActivityViewModel.class);
+        getAllAlbums();
     }
 
-private void getAllAlbums() {
-    mainActivityViewModel.getAllAlbums().observe(this, new Observer<List<Album>>() {
-        @Override
-        public void onChanged(List<Album> albumsFromLiveData) {
-            albumArrayList = (ArrayList<Album>) albumsFromLiveData;
+        private void getAllAlbums() {
+            mainActivityViewModel.getAllAlbums().observe(
+                    this, new Observer<List<Album>>() {
+                @Override
+                public void onChanged(List<Album> albums) {
+                    albumArrayList = (ArrayList<Album>) albums;
 
-            displayInRecyclerView();
-            }
-    });
-}
-    private void displayInRecyclerView(){
+                    displayInRecyclerView();
+                }
+            });
+        }
+
+    private void displayInRecyclerView() {
+        Album album1 = new Album("1", "Album1", new Artist("1", "Artist1"), "ROCK", "1990", "1");
+        Album album2 = new Album("2", "Album2", new Artist("2", "Artist2"), "ROCK", "1980", "1");
+
+        List<Album> albumList = new ArrayList<>();
+        albumList.add(album1);
+        albumList.add(album2);
         recyclerView = activityMainBinding.recyclerView;
-        albumAdapter = new AlbumAdapter(albumArrayList, recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
+        albumAdapter = new AlbumAdapter(albumList, this);
+        recyclerView.setAdapter(albumAdapter);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.hasFixedSize();
         albumAdapter.notifyDataSetChanged();
     }
 }
