@@ -53,13 +53,13 @@ public class AlbumRepository {
             @Override
             public void onResponse(Call<Album> call, Response<Album> response) {
                 Toast.makeText(application.getApplicationContext(),
-                        "Album added", Toast.LENGTH_SHORT).show();
+                        "Album added to database", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFailure(Call<Album> call, Throwable t) {
                 Toast.makeText(application.getApplicationContext(),
-                        "Album unable to be added", Toast.LENGTH_SHORT).show();
+                        "Album unable to be added to database", Toast.LENGTH_SHORT).show();
             }
         });
     }
