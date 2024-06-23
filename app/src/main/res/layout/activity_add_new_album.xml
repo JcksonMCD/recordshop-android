@@ -8,6 +8,9 @@
         <variable
             name="album"
             type="com.example.recordshop_frontend.model.Album" />
+        <variable
+            name="clickHandler"
+            type="com.example.recordshop_frontend.ui.addalbum.AddAlbumClickHandlers" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -91,7 +94,8 @@
         android:text="Add Album"
         android:backgroundTint="@color/grey"
         android:textColor="@color/black"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:onClick="@{clickHandler::submitAddAlbum}"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="50dp"
@@ -104,6 +108,7 @@
         app:maxImageSize="35dp"
         android:backgroundTint="@color/grey"
         app:fabCustomSize="50dp"
+        android:onClick="@{clickHandler::returnToHomePage}"
         />
 
 
