@@ -7,4 +7,62 @@
     android:layout_height="match_parent"
     tools:context=".ui.addalbum.AddNewAlbumActivity">
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"
+        android:text="Add Album"/>
+
+    <EditText
+        android:id="@+id/addTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        android:autofillHints="Title"
+        app:layout_constraintTop_toBottomOf="@+id/title"/>
+
+    <EditText
+        android:id="@+id/addArtist"
+        android:autofillHints="Artist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/addTitle"/>
+
+    <EditText
+        android:id="@+id/addGenre"
+        android:autofillHints="Genre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/addArtist"/>
+
+    <EditText
+        android:id="@+id/addReleaseYear"
+        android:autofillHints="Release Year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/addGenre"/>
+
+    <EditText
+        android:id="@+id/addStockQuantity"
+        android:autofillHints="Stock quantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/addGenre"/>
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
