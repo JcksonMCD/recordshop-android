@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private AlbumAdapter albumAdapter;
     private MainActivityViewModel mainActivityViewModel;
     private ActivityMainBinding activityMainBinding;
+    private MainActivityClickHandler clickHandlers;
 
 
     @Override
@@ -39,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
         mainActivityViewModel = new ViewModelProvider(this)
                 .get(MainActivityViewModel.class);
+
+        clickHandlers = new MainActivityClickHandler(this);
+        activityMainBinding.setMainActivityClickHandler(clickHandlers);
+
         getAllAlbums();
     }
 
@@ -55,12 +60,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
     private void displayInRecyclerView() {
-        Album album1 = new Album("1", "Album1", new Artist("1", "Artist1"), "ROCK", "1990", "1");
-        Album album2 = new Album("2", "Album2", new Artist("2", "Artist2"), "ROCK", "1980", "1");
-
-        List<Album> albumList = new ArrayList<>();
-        albumList.add(album1);
-        albumList.add(album2);
+//        Album album1 = new Album("1", "Album1", new Artist("1", "Artist1"), "ROCK", "1990", "1");
+//        Album album2 = new Album("2", "Album2", new Artist("2", "Artist2"), "ROCK", "1980", "1");
+//
+//        List<Album> albumList = new ArrayList<>();
+//        albumList.add(album1);
+//        albumList.add(album2);
         recyclerView = activityMainBinding.recyclerView;
         albumAdapter = new AlbumAdapter(albumArrayList, this);
         recyclerView.setAdapter(albumAdapter);

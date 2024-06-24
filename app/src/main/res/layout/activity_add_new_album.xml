@@ -78,7 +78,7 @@
         android:id="@+id/addStockQuantity"
         android:hint="Stock quantity"
         android:textColorHint="@color/grey"
-        android:text="@={album.albumName}"
+        android:text="@={album.stockQuantity}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="30dp"

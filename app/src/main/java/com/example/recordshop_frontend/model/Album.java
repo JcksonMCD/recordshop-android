@@ -1,7 +1,11 @@
 package com.example.recordshop_frontend.model;
 
+import android.widget.TextView;
+
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
+import androidx.databinding.BindingAdapter;
+import androidx.databinding.InverseBindingAdapter;
 
 import com.example.recordshop_frontend.BR;
 import com.google.gson.annotations.SerializedName;
@@ -22,15 +26,15 @@ public class Album extends BaseObservable {
     String genre;
 
     @SerializedName(value = "releaseYear")
-    String releaseYear;
+    int releaseYear;
 
     @SerializedName(value = "stockQuantity")
-    String stockQuantity;
+    int stockQuantity;
 
     public Album() {
     }
 
-    public Album(String id, String albumName, Artist artist, String genre, String releaseYear, String stockQuantity) {
+    public Album(String id, String albumName, Artist artist, String genre, int releaseYear, int stockQuantity) {
         this.id = id;
         this.albumName = albumName;
         this.artist = artist;
@@ -80,22 +84,36 @@ public class Album extends BaseObservable {
     }
 
     @Bindable
-    public String getReleaseYear() {
+    public int getReleaseYear() {
         return releaseYear;
     }
 
-    public void setReleaseYear(String releaseYear) {
+    public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
-        notifyPropertyChanged(BR.releaseYear);
+        notifyPropertyChanged(BR.album);
     }
 
     @Bindable
-    public String getStockQuantity() {
+    public int getStockQuantity() {
         return stockQuantity;
     }
 
-    public void setStockQuantity(String stockQuantity) {
+    public void setStockQuantity(int stockQuantity) {
         this.stockQuantity = stockQuantity;
-        notifyPropertyChanged(BR.stockQuantity);
+        notifyPropertyChanged(BR.album);
+    }
+
+    @BindingAdapter("android:text")
+    public static void setText(TextView view, int value) {
+        if (view.getText() != null
+                && ( !view.getText().toString().isEmpty() )
+                && Integer.parseInt(view.getText().toString()) != value) {
+            view.setText(Integer.toString(value));
+        }
+    }
+
+    @InverseBindingAdapter(attribute = "android:text")
+    public static int getText(TextView view) {
+        return Integer.parseInt(view.getText().toString());
     }
 }
