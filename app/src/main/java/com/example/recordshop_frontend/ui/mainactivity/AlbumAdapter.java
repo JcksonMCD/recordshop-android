@@ -34,7 +34,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.AlbumViewHol
     public AlbumViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         AlbumPresentationBinding albumPresentationBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.album_presentation, parent, false);
 
-        return new AlbumViewHolder(albumPresentationBinding);
+        return new AlbumViewHolder(albumPresentationBinding, recyclerViewInterface);
     }
 
     @Override

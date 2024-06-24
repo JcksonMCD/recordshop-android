@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 //        albumList.add(album1);
 //        albumList.add(album2);
         recyclerView = activityMainBinding.recyclerView;
-        albumAdapter = new AlbumAdapter(albumArrayList, this);
+        albumAdapter = new AlbumAdapter(albumArrayList, this, this);
         recyclerView.setAdapter(albumAdapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
