@@ -1,10 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.updatealbum.UpdateBookActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+        <variable
+            name="album"
+            type="com.example.recordshop_frontend.model.Album" />
+        <variable
+            name="clickHandler"
+            type="com.example.recordshop_frontend.ui.addalbum.AddAlbumClickHandlers" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.addalbum.AddNewAlbumActivity">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="40dp"
+            android:text="Edit Album"/>
+
+        <EditText
+            android:id="@+id/addTitle"
+            android:hint="Title"
+            android:textColorHint="@color/grey"
+            android:text="@={album.albumName}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/title"/>
+
+        <EditText
+            android:id="@+id/addArtist"
+            android:hint="Artist"
+            android:textColorHint="@color/grey"
+            android:text="@={album.artist.artistName}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/addTitle"/>
+
+        <EditText
+            android:id="@+id/addGenre"
+            android:hint="Genre"
+            android:textColorHint="@color/grey"
+            android:text="@={album.genre}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/addArtist"/>
+
+        <EditText
+            android:id="@+id/addReleaseYear"
+            android:hint="Release Year"
+            android:textColorHint="@color/grey"
+            android:text="@={album.releaseYear}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/addGenre"/>
+
+        <EditText
+            android:id="@+id/addStockQuantity"
+            android:hint="Stock quantity"
+            android:textColorHint="@color/grey"
+            android:text="@={album.stockQuantity}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/addReleaseYear"/>
+
+        <Button
+            android:id="@+id/updateAlbum"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            app:layout_constraintTop_toBottomOf="@id/addStockQuantity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="30dp"
+            android:text="Update Album"
+            android:backgroundTint="@color/grey"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:onClick="@{clickHandler::submitAddAlbum}"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            app:layout_constraintTop_toBottomOf="@id/updateAlbum"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="30dp"
+            android:text="Delete Album"
+            android:backgroundTint="@color/grey"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:onClick="@{clickHandler::submitAddAlbum}"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="25dp"
+            android:layout_marginBottom="25dp"
+            android:src="@drawable/arrow_left"
+            app:maxImageSize="35dp"
+            android:backgroundTint="@color/grey"
+            app:fabCustomSize="50dp"
+            android:onClick="@{clickHandler::returnToHomePage}"
+            />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
