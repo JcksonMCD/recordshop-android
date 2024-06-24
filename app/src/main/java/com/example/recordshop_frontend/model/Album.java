@@ -1,7 +1,10 @@
 package com.example.recordshop_frontend.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import androidx.databinding.BindingAdapter;
@@ -11,7 +14,7 @@ import com.example.recordshop_frontend.BR;
 import com.google.gson.annotations.SerializedName;
 
 
-public class Album extends BaseObservable {
+public class Album extends BaseObservable implements Parcelable {
 
     @SerializedName(value = "id")
     String id;
@@ -116,4 +119,40 @@ public class Album extends BaseObservable {
     public static int getText(TextView view) {
         return Integer.parseInt(view.getText().toString());
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int flags) {
+        parcel.writeString(id);
+        parcel.writeString(albumName);
+        parcel.writeParcelable(artist, flags);
+        parcel.writeString(genre);
+        parcel.writeInt(releaseYear);
+        parcel.writeInt(stockQuantity);
+    }
+
+    protected Album(Parcel in) {
+        id = in.readString();
+        albumName = in.readString();
+        artist = in.readParcelable(Artist.class.getClassLoader());
+        genre = in.readString();
+        releaseYear = in.readInt();
+        stockQuantity = in.readInt();
+    }
+
+    public static final Creator<Album> CREATOR = new Creator<Album>() {
+        @Override
+        public Album createFromParcel(Parcel in) {
+            return new Album(in);
+        }
+
+        @Override
+        public Album[] newArray(int size) {
+            return new Album[size];
+        }
+    };
 }
