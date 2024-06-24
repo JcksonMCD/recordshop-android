@@ -1,5 +1,6 @@
 package com.example.recordshop_frontend.ui.mainactivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -17,6 +18,7 @@ import com.example.recordshop_frontend.R;
 import com.example.recordshop_frontend.databinding.ActivityMainBinding;
 import com.example.recordshop_frontend.model.Album;
 import com.example.recordshop_frontend.model.Artist;
+import com.example.recordshop_frontend.ui.updatealbum.UpdateAlbumActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     private MainActivityViewModel mainActivityViewModel;
     private ActivityMainBinding activityMainBinding;
     private MainActivityClickHandler clickHandlers;
+    private static final String ALBUM_KEY = "album";
 
 
     @Override
@@ -77,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
     @Override
     public void onItemClick(int position) {
-
+        Intent intent = new Intent(MainActivity.this, UpdateAlbumActivity.class);
+        intent.putExtra(ALBUM_KEY, albumArrayList.get(position));
     }
 }

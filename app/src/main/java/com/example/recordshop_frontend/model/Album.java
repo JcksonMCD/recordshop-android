@@ -17,22 +17,22 @@ import com.google.gson.annotations.SerializedName;
 public class Album extends BaseObservable implements Parcelable {
 
     @SerializedName(value = "id")
-    String id;
+    private String id;
 
     @SerializedName(value = "albumName")
-    String albumName;
+    private String albumName;
 
     @SerializedName(value = "artist")
-    Artist artist;
+    private Artist artist;
 
     @SerializedName(value = "genre")
-    String genre;
+    private String genre;
 
     @SerializedName(value = "releaseYear")
-    int releaseYear;
+    private int releaseYear;
 
     @SerializedName(value = "stockQuantity")
-    int stockQuantity;
+    private int stockQuantity;
 
     public Album() {
     }
@@ -93,7 +93,7 @@ public class Album extends BaseObservable implements Parcelable {
 
     public void setReleaseYear(int releaseYear) {
         this.releaseYear = releaseYear;
-        notifyPropertyChanged(BR.album);
+        notifyPropertyChanged(BR.releaseYear);  // Corrected ID
     }
 
     @Bindable
@@ -103,13 +103,13 @@ public class Album extends BaseObservable implements Parcelable {
 
     public void setStockQuantity(int stockQuantity) {
         this.stockQuantity = stockQuantity;
-        notifyPropertyChanged(BR.album);
+        notifyPropertyChanged(BR.stockQuantity);  // Corrected ID
     }
 
     @BindingAdapter("android:text")
     public static void setText(TextView view, int value) {
         if (view.getText() != null
-                && ( !view.getText().toString().isEmpty() )
+                && (!view.getText().toString().isEmpty())
                 && Integer.parseInt(view.getText().toString()) != value) {
             view.setText(Integer.toString(value));
         }
