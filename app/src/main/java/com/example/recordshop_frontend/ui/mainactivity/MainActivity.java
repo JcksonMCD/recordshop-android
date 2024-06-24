@@ -21,7 +21,7 @@ import com.example.recordshop_frontend.model.Artist;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecyclerViewInterface {
     private RecyclerView recyclerView;
     private ArrayList<Album> albumArrayList;
     private AlbumAdapter albumAdapter;
@@ -73,5 +73,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.hasFixedSize();
         albumAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onItemClick(int position) {
+
     }
 }
