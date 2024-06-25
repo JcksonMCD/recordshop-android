@@ -2,6 +2,7 @@ package com.example.recordshop_frontend.ui.mainactivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -51,11 +52,37 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
 
         searchView.findViewById(R.id.searchView);
         searchView.clearFocus();
-        
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterList(newText);
+                return false;
+            }
+        });
         getAllAlbums();
     }
 
-        private void getAllAlbums() {
+    private void filterList(String newText) {
+        ArrayList<Album> filteredAlbums = new ArrayList<>();
+
+        for (Album album : albumArrayList){
+            if(album.getAlbumName().contains(newText.toLowerCase())){
+                filteredAlbums.add(album);
+            }
+        }
+
+        if (filteredAlbums.isEmpty()){
+            Toast.makeText(MainActivity.this,"No Albums found", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void getAllAlbums() {
             mainActivityViewModel.getAllAlbums().observe(
                     this, new Observer<List<Album>>() {
                 @Override
