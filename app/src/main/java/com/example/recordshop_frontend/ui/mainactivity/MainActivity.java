@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     private ActivityMainBinding activityMainBinding;
     private MainActivityClickHandler clickHandlers;
     private static final String ALBUM_KEY = "album";
+    private SearchView searchView;
 
 
     @Override
@@ -41,12 +43,15 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
                 this,
                 R.layout.activity_main);
 
-        mainActivityViewModel = new ViewModelProvider(this)
-                .get(MainActivityViewModel.class);
-
         clickHandlers = new MainActivityClickHandler(this);
         activityMainBinding.setMainActivityClickHandler(clickHandlers);
 
+        mainActivityViewModel = new ViewModelProvider(this)
+                .get(MainActivityViewModel.class);
+
+        searchView.findViewById(R.id.searchView);
+        searchView.clearFocus();
+        
         getAllAlbums();
     }
 
@@ -82,6 +87,6 @@ public class MainActivity extends AppCompatActivity implements RecyclerViewInter
     public void onItemClick(int position) {
         Intent intent = new Intent(MainActivity.this, UpdateAlbumActivity.class);
         intent.putExtra(ALBUM_KEY, albumArrayList.get(position));
-//        context.startActivity(intent);
+        this.startActivity(intent);
     }
 }
