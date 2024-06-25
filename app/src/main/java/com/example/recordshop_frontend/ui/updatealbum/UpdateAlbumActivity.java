@@ -12,7 +12,9 @@ import com.example.recordshop_frontend.R;
 import com.example.recordshop_frontend.model.Album;
 
 public class UpdateAlbumActivity extends AppCompatActivity {
-
+//    ActivityUpdateAlbumBinding albumBinding;
+//    UpdateAlbumClickHandler handler;
+//    Album album;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
